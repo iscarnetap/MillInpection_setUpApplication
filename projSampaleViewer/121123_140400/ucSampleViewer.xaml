@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="projSampaleViewer.ucSampleViewerClass" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:v="clr-namespace:ViDi2.UI;assembly=ViDi.NET.UI"
+             xmlns:tui="clr-namespace:ViDi2.Training.UI;assembly=ViDi.NET.Training.UI"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:winres="clr-namespace:System.Windows.Resources"             
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             
+                          
+             mc:Ignorable="d" Height="985" Width="1860">
+    <Grid Margin="-830,-835,-665,-790" Name="MainWindow">
+        <v:SampleViewer x:Name="sampleViewer" AllowDrop="True" Margin="0,0,-125,15" Height="784" Width="1095"/>
+        
+    </Grid>
+</UserControl>
