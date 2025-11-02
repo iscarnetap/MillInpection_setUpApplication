@@ -19,7 +19,12 @@ using INIgetset;
 using DefectsInspection;
 using SystemColors = System.Windows.SystemColors;
 using System.ServiceModel.Syndication;
-
+using ViDi2;
+using System.Collections.ObjectModel;
+using System.Reflection;
+using OxyPlot;
+using System.Drawing.Imaging;
+using SuaKIT_SegmentationEvaluator;
 namespace projSampaleViewer
 {
     public partial class MainScreen : Form
@@ -28,7 +33,53 @@ namespace projSampaleViewer
         {
             InitializeComponent();
         }
+        private Vector3 currentPosition;
+        private float DPI
+        {
+            get
+            {
+                using (var g = CreateGraphics())
+                    return g.DpiX;
+            }
+        }
+        //private Vector3 PointToCartesian(System.Drawing.Point point)
+        //{
+        //    return new Vector3(Pixel_to_Mn(point.X), Pixel_to_Mn(pictureBox1.Height - point.Y));
+        //}
 
+        private float Pixel_to_Mn(float pixel)
+        {
+            return pixel * 25.4f / DPI;
+        }
+
+        private float Mm_to_Pixel(float Mm)
+        {
+            return Mm*DPI/25.4f;
+        }
+
+        public struct CurrentImage
+        {
+            public int imgWidth;
+            public int imgHeight;
+            public int picBoxDefaultWidth;
+            public int picBoxDefaultHeight;
+            public string path;
+            public float ratioX; //ratio real image size to picture box size
+            public float ratioY; //ratio real image size to picture box size
+            public string imageName;
+            public int InOrderIndex;
+            public string CatalogNumber;
+            public int iStationNumber;
+            public Image zoomSnap1;
+            public Image zoomSnap2;
+            public Image zoomSnap3;
+            public Image zoomSnap4;
+            public Image zoomSnap5;
+            public Image imgActiveImage;
+            public string LocalLastImagePath;
+            public string ImageFileType;
+
+        }
         public struct RegionFound
         {
             public double area;
@@ -60,32 +111,9 @@ namespace projSampaleViewer
         }
         public struct ROI
         {
-            public Rect rect;
+            public ViDi2.Rect rect;
             public double angle;
             public bool xROIused;
-        }
-        public struct CurrentImage
-        {
-            public int imgWidth;
-            public int imgHeight;
-            public int picBoxDefaultWidth;
-            public int picBoxDefaultHeight;
-            public string path;
-            public float ratioX; //ratio real image size to picture box size
-            public float ratioY; //ratio real image size to picture box size
-            public string imageName;
-            public int InOrderIndex;
-            public string CatalogNumber;
-            public int iStationNumber;
-            //public Image zoomSnap1;
-            //public Image zoomSnap2;
-            //public Image zoomSnap3;
-            //public Image zoomSnap4;
-            //public Image zoomSnap5;
-            public Image imgActiveImage;
-            public string LocalLastImagePath;
-            public string ImageFileType;
-
         }
         public struct FilterEvalOutput
         {
@@ -95,20 +123,107 @@ namespace projSampaleViewer
             public string FilterUsed;
 
         }
+        public struct JsonLblData
+        {
+            public int[][,] ijCoordinates;
+            public byte[] bClasses;
 
+        }
+        public struct Rect
+        {
+            public int ClassID;
+            public int width;
+            public int height;
+            public int x;
+            public int y;
+            public double prob;
+            public double uncert;
+            public bool xPassedAllTests;
+
+        }
+        public struct Results
+        {
+            public JsonLblData[] Contours;
+            public double[] fProb;
+            public double[] fUncert;
+            public int iClassID;
+            public string sDefectID;
+            public Rect[] rect;
+            public bool[] xInSearchRegion;
+            public int[] iRegionNumber;
+
+            public bool[] xInternalInSearchRegion;
+            public int[] iInternalRegionNumber;
+
+
+        }
+        public struct ResultsStats
+        {
+            public double[] ProbAll;
+            public double[] UncertAll;
+
+            public double ProbAverage;
+            public double UncertAverage;
+            public double ProbStdDev;
+            public double UncertStdDev;
+
+            public double ProbMedian;
+            public double UncertMedian;
+
+            public double ProbMin;
+            public double UncertMin;
+            public double ProbMax;
+            public double UncertMax;
+
+            public int iSampleSize;
+        }
+        public struct ResultsClass
+        {
+            public Results[] ResultsPerClass;
+            public string ResultsPath;
+            public string ImageName;
+            public string CatalogNumber;
+            public ResultsStats[] resultsStatsPerClass;
+            public string[] searchRegions;
+            public RectangleResizeAndRotateAdd.RegionEvalResultsPerClass[] RegionalSearchResults;
+        }
+
+        public struct DataForDisplayDefects
+        {
+
+            public List<int> indexesToDisplay;
+            public List<string> sProbUncert;
+            public int selectedContour;
+            public List<double> dProbSort;
+            public List<double> dUncertSort;
+            public List<string> sInSearchRegion;
+
+            public string[] sProbUncertList;
+            public string[] sInSearchRegionList;
+            public int[] OverLappedIndexes;
+            public bool BeenUsed;
+            public int[] NumContoursPerClass;
+
+
+        }
         //private System.Windows.Forms.Integration.ElementHost elementHost1;
         ViDiSuiteServiceLocator viDiSuiteServiceLocator = new ViDiSuiteServiceLocator();
         System.Windows.Controls.UserControl cc = new System.Windows.Controls.UserControl();
         Func<int, int> square = x => x * x;
-        IControl control;
-        IWorkspace workspace;
-        IStream stream;
+        ViDi2.Runtime.IControl control;
+        ViDi2.Runtime.IWorkspace workspace;
+        ViDi2.Runtime.IStream stream;
+        ViDi2.Runtime.IStream[] streamArr;
+        ViDi2.Runtime.IControl control1;
+        ViDi2.Runtime.IWorkspace workspace1;
+        ViDi2.Runtime.IStream stream1;
+        ViDi2.Runtime.IStream[] streamArr1;
         private ucSampleViewerClass sampleviewr = new ucSampleViewerClass();
         private string sversion = "Sample Viewer 07-12-2023";
         private string INIpath = System.Windows.Forms.Application.StartupPath + @"\Data\INI.ini";
         private ViDi2.Runtime.IWorkspaceList rwsl;
         public static RectangleResizeAndRotateAdd StaticROI = new RectangleResizeAndRotateAdd();
-        private Rect currentROI = new Rect();
+        private System.Windows.Rect currentROI = new System.Windows.Rect();
         public static frmStartUpWindow sform;
         private bool xNoAction;
         private System.Threading.Thread tnewthread;
@@ -124,13 +239,25 @@ namespace projSampaleViewer
         private const string editmodeCaption = "ROI MODE";
         private FilterEvalOutput gfilterEvalOutput = new FilterEvalOutput();
         public ISampleViewerViewModel SampleViewerViewModel => sampleviewr.sampleViewer.ViewModel;
-
+        RegionFound[] CurrentRegion;
+        int RegCnt;
+        public static CurrentImage currentImage = new CurrentImage();
+        private ImageCodecInfo jgpEncoder;
+        private EncoderParameters myEncoderParameters;
+        private string defaultImagePath;
+        private int PicBoxWith;
+        private int PicBoxHeight;
+        ExportResults.ResultsAndInfo resultsEvluator = new ExportResults.ResultsAndInfo();
+        Image regionPic;
+        Image unsignImage;
+        Image signImage;
+        int currentZoom;
         private void initProporties()
         {
-            IStream stream = Stream;
-            IWorkspace workspace = Workspace;
-            IControl control = Control;
-            IList<IWorkspace> ws = Workspaces;
+            ViDi2.Runtime.IStream stream = Stream;
+            ViDi2.Runtime.IWorkspace workspace = Workspace;
+            ViDi2.Runtime.IControl control = Control;
+            IList<ViDi2.Runtime.IWorkspace> ws = Workspaces;
             Dictionary<int, string> dic = ViewIndices;
 
             //SampleViewerViewModel.
@@ -143,7 +270,7 @@ namespace projSampaleViewer
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
-        public IStream Stream
+        public ViDi2.Runtime.IStream Stream
         {
             get { return stream; }
             set
@@ -153,7 +280,17 @@ namespace projSampaleViewer
                 RaisePropertyChanged(nameof(Stream));
             }
         }
-        public IWorkspace Workspace
+        public ViDi2.Runtime.IStream Stream1
+        {
+            get { return stream1; }
+            set
+            {
+                stream1 = value;
+                SampleViewerViewModel.Sample = null;
+                RaisePropertyChanged(nameof(Stream1));
+            }
+        }
+        public ViDi2.Runtime.IWorkspace Workspace
         {
             get { return workspace; }
             set
@@ -163,7 +300,17 @@ namespace projSampaleViewer
                 RaisePropertyChanged(nameof(Workspace));
             }
         }
-        public IControl Control
+        public ViDi2.Runtime.IWorkspace Workspace1
+        {
+            get { return workspace1; }
+            set
+            {
+                workspace1 = value;
+                Stream = workspace1.Streams.First();
+                RaisePropertyChanged(nameof(Workspace1));
+            }
+        }
+        public ViDi2.Runtime.IControl Control
         {
             get { return control; }
             set
@@ -174,7 +321,19 @@ namespace projSampaleViewer
                 RaisePropertyChanged(nameof(Stream));
             }
         }
-        public IList<IWorkspace> Workspaces => Control.Workspaces.ToList();
+        public ViDi2.Runtime.IControl Control1
+        {
+            get { return control1; }
+            set
+            {
+                control1 = value;
+                RaisePropertyChanged(nameof(Control1));
+                RaisePropertyChanged(nameof(Workspaces1));  //;
+                RaisePropertyChanged(nameof(Stream1));
+            }
+        }
+        public IList<ViDi2.Runtime.IWorkspace> Workspaces => Control.Workspaces.ToList();
+        public IList<ViDi2.Runtime.IWorkspace> Workspaces1 => Control1.Workspaces.ToList();
         public DependencyObject Var { get; private set; }
         public Dictionary<int, string> ViewIndices
         {
@@ -199,8 +358,6 @@ namespace projSampaleViewer
         {
             try
             {
-
-
                 string modelPath = "";
                 IniFile AppliIni = new IniFile(INIpath);
                 modelPath = AppliIni.ReadValue("Last Model", "Full path", "");
@@ -271,13 +428,16 @@ namespace projSampaleViewer
                 //
                 //txtRunTimeWSName.Text = Workspace.DisplayName;
                 stream = Workspace.Streams.First();
+                //create new stream
+               //ViDi2.IStream SS = Workspace.Streams["ModelName"];
+
                 string streamName = stream.Name;  // Workspace.Streams.First().Name;
-                ITool tool = Workspace.Streams[streamName].Tools.First();
+                ViDi2.Runtime.ITool tool = Workspace.Streams[streamName].Tools.First();
                 //txtToolName.Text = tool.Name;   // Workspace.Streams[streamName].Tools.First().Name;            
                 //txtToolType.Text = tool.Type.ToString();
 
                 //class name display
-                IRedTool tool1 = (IRedTool)stream.Tools.First();
+                ViDi2.Runtime.IRedTool tool1 = (ViDi2.Runtime.IRedTool)stream.Tools.First();
                 var knownClasses = tool1.KnownClasses;
                 if (knownClasses.Count > 0)
                 {
@@ -293,7 +453,7 @@ namespace projSampaleViewer
                 //var si = this.lstModels.SelectedItem;
 
             }
-            catch (Exception e)
+            catch (ViDi2.Exception e)
             {
                 System.Windows.Forms.MessageBox.Show("loadModel(), Error: " + e.Message);
             }
@@ -302,8 +462,14 @@ namespace projSampaleViewer
 
         }
 
-        private static bool IsNumeric(string InputString)
+
+        private void OverLayLabelRecOnly(ResultsClass results, DataForDisplayDefects DataForObj, int[] NumContoursPerClass) //List<int> indexesToDisplay)
         {
+            
+        }
+
+            private static bool IsNumeric(string InputString)
+            {
             bool xreturn = false;
             int iNum;
             float fNum;
@@ -320,8 +486,11 @@ namespace projSampaleViewer
 
         private void btnDefect_Click(object sender, EventArgs e)
         {
-            if (stream != null)
+             if (stream != null)
             {
+            string INIpath = System.Windows.Forms.Application.StartupPath + @"\Data\INI.ini";
+            string[] ModelsNames;
+            string modelName = txtRunTimeWSName.Text.Trim() + ".vrws";  // this.lstModels.SelectedItem.ToString();
             double ActualHeight = sampleviewr.sampleViewer.ActualHeight;
             double ActualWidth = sampleviewr.sampleViewer.ActualWidth;
             string imagePath = @"S:\A03 - Tools\A03-HW-M70 Pressing.Systems\Public\SC End Mills Inspection\Data labeling\images\round light 28.06.23\002 defect";
@@ -341,7 +510,6 @@ namespace projSampaleViewer
             if (!File.Exists(fullPath)) { System.Windows.Forms.MessageBox.Show("Image or Path Don't Exist!,\n\r" + fullPath); goto exitProcedure; }
             this.Text = sversion + ", Current Image: " + fullPath;  /// imagePath;
 
-            string INIpath = System.Windows.Forms.Application.StartupPath + @"\Data\INI.ini";
 
             IniFile AppliIni = new IniFile(INIpath);
             AppliIni.WriteValue("Last Image", "path", ImagePath);
@@ -350,7 +518,6 @@ namespace projSampaleViewer
 
             AppliIni.WriteValue("Models", "path", txtModelsPath.Text.Trim());
 
-            string modelName = txtRunTimeWSName.Text.Trim() + ".vrws";  // this.lstModels.SelectedItem.ToString();
 
             AppliIni.WriteValue("Models", "model", modelName);
 
@@ -361,7 +528,7 @@ namespace projSampaleViewer
            //--------------------------set thresholds--------------------------------
             IRedHighDetailParameters hdRedParams = Stream.Tools.First().ParametersBase as IRedHighDetailParameters;
 
-            IRedTool hdRedTool = (IRedTool)Stream.Tools.First();
+            ViDi2.Runtime.IRedTool hdRedTool = (ViDi2.Runtime.IRedTool)Stream.Tools.First();
 
             double lower = 0.0;
             double upper = 0.0;
@@ -394,19 +561,18 @@ namespace projSampaleViewer
 
                 //ViDi2.IParameters pb = Stream.Tools.First().ParametersBase;
             }
+
             //-----------------------------------process image----------------------------------
-            SampleViewerViewModel.Sample = stream.Process(image);
+            SampleViewerViewModel.Sample = stream.Process(image);           
 
             IMarkingOverlayViewModel mm = SampleViewerViewModel.MarkingModel;
-
             int numFrames = SampleViewerViewModel.Sample.Frames.Count;
             string sampleName = SampleViewerViewModel.Sample.Name;
             ViDi2.IMarking marking = SampleViewerViewModel.Marking;
             IMarkingOverlayViewModel markingmodel = SampleViewerViewModel.MarkingModel;
-
             System.Collections.ObjectModel.ReadOnlyCollection<ViDi2.IView> views = marking.Views;
 
-            double duration = marking.Duration; //process time
+                double duration = marking.Duration; //process time
             double durationPostProcess = marking.DurationPostProcess;
             double durationProcessOnly = marking.DurationProcessOnly;
             ViDi2.IImageInfo imageinfo = marking.ImageInfo;
@@ -619,7 +785,7 @@ namespace projSampaleViewer
 
                 xError = false;
             }
-            catch (Exception e)
+            catch (ViDi2.Exception e)
             {
                 xError = true;
                 Console.WriteLine("SaveTextToFile(), Error saving barcode to file, " + e.Message, "Error!");
@@ -636,7 +802,7 @@ namespace projSampaleViewer
 
             RegionFound[] regionFound = new RegionFound[redview.Regions.Count];
 
-            IRedTool tool = (IRedTool)Stream.Tools.First();
+            ViDi2.Runtime.IRedTool tool = (ViDi2.Runtime.IRedTool)Stream.Tools.First();
 
             var knownClasses = tool.KnownClasses;
             string className = knownClasses[0];
@@ -720,12 +886,23 @@ namespace projSampaleViewer
 
 
         }
-
+        Image ZoomPicture(Image img, System.Drawing.Size size)
+        {
+            Bitmap bm = new Bitmap (regionPic, Convert.ToInt32(regionPic.Width * size.Width),Convert.ToInt32(regionPic.Height * size.Height));
+            Graphics gpu = Graphics.FromImage (bm);
+            gpu.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            return bm;
+        }
+        PictureBox org;
         private void txtModelsPath_Load(object sender, EventArgs e)
         {
+            cmbImageName.Items.Clear();
             string[] sMode = System.Windows.Forms.Application.StartupPath.Split('\\');
             lblRunMode.Visible = false;
             lblRunMode.Text = "Run mode: " + sMode[sMode.Length - 1];
+
+            PicBoxWith = pictureBox1.Width;
+            PicBoxHeight = pictureBox1.Height;
 
             string INIpath = System.Windows.Forms.Application.StartupPath + @"\Data\INI.ini";
             IniFile AppliIni = new IniFile(INIpath);
@@ -792,16 +969,17 @@ namespace projSampaleViewer
             }
 
             string[] dirImages = Directory.GetFiles(ImagePath);
-
+            Bitmap picture = new Bitmap(dirImages[0]);
+            pictureBox1.Image = picture;
             //only image name
-            foreach (string item in dirImages)
-            {
-                cmbImageName.Items.Add(Path.GetFileName(item));
-            }
+            //foreach (string item in dirImages)
+            //{
+            //    cmbImageName.Items.Add(Path.GetFileName(item));
+            //}
 
             int index = cmbImageName.Items.IndexOf(ImageName);
             cmbImageName.SelectedIndex = index;
-
+            Image img = cmbImageName.Items[0] as Image;
             //
             loadModels();
             sform.Visible = false;
@@ -828,29 +1006,37 @@ namespace projSampaleViewer
             xNoAction = false;
 
             Rectangle ImageDimensions = new Rectangle();
-            Rect rect = new Rect();
+           ViDi2.Rect rect = new ViDi2.Rect();
             if (chkUsePPevaluationROI.Checked)
                 ApplyROI(true, ImageDimensions, false, rect);
 
             //
             //tryGridWrite();  
 
-            //                
+            //                      
+
             txtAreaFilterWidth.Text = AppliIni.ReadValue("OUTPUT FILTER", "Area Width", "");
             txtAreaFilterHeight.Text = AppliIni.ReadValue("OUTPUT FILTER", "Area Height", "");
             txtAreaFilterScore.Text = AppliIni.ReadValue("OUTPUT FILTER", "Score", "");
             chkFilterActive.Checked = Convert.ToBoolean(AppliIni.ReadValue("OUTPUT FILTER", "Used", ""));
+
+            trackBar1.Minimum = 1;
+            trackBar1.Maximum = 6;
+            trackBar1.SmallChange = 1;
+            trackBar1.LargeChange = 1;
+            trackBar1.UseWaitCursor = false;
+            this.DoubleBuffered = true;
+            org = new PictureBox();
+            org.Image = pictureBox1.Image;
         }
 
         private void elementHost2_MouseWheel(object sender, MouseWheelEventArgs e)
         {
             RoutedEvent mb = e.RoutedEvent;
 
-
-
         }
 
-        private void ApplyROI(bool xNoSave, Rectangle ImageDimensions, bool xAutoROIU, Rect rect)
+        private void ApplyROI(bool xNoSave, Rectangle ImageDimensions, bool xAutoROIU, ViDi2.Rect rect)
         {
 
             ViDi2.IManualRegionOfInterest redROI01 = (ViDi2.IManualRegionOfInterest)Stream.Tools.First().RegionOfInterest;
@@ -967,5 +1153,691 @@ namespace projSampaleViewer
 
 
         }
+
+        public void SetPictureBox()
+        {
+            lststdResults.Items.Clear();
+            if (stream != null)
+            {
+                string[] ModelsNames = new string[2];
+                string ss = txtModelsPath.Text;
+                int numFiles = Directory.GetFiles(ss, "*.vrws").GetLength(0);
+
+                string ImagePath = txtImagePath.Text;
+                string ImageName = cmbImageName.Text;
+                if (!File.Exists(ImagePath + @"\" + ImageName))
+                {
+                    System.Windows.Forms.MessageBox.Show("image path " + ImagePath + @"\" + ImageName + "don't exist");
+                }
+                string modelsPath = txtModelsPath.Text;
+                string[] dirModels = Directory.GetFiles(modelsPath, "*.vrws");
+                foreach (string item in dirModels)
+                {
+                    if (!File.Exists(item))
+                    {
+                        System.Windows.Forms.MessageBox.Show("model path " + item + "don't exist");
+                    }
+                }
+                string[] dirImages = Directory.GetFiles(ImagePath, "*.jpg");
+                Bitmap bmp = new Bitmap(dirImages[cmbImageName.SelectedIndex]);
+
+                float imgWidth = Convert.ToSingle(bmp.Width);
+                float imgHeight = Convert.ToSingle(bmp.Height);
+                float fAspectRatio = imgWidth / imgHeight;
+                int width1 = 0;
+                if (true)
+                {
+                    width1 = bmp.Width;  //pbxShowImage.Width;  //this.currentImage.picBoxDefaultWidth;
+                }
+                else
+                {
+                    width1 = (int)imgWidth;
+                }
+
+                int height1 = pictureBox1.Height;
+                float fHeight = Convert.ToSingle(width1) / fAspectRatio;
+
+                Bitmap ImagSized = new Bitmap(bmp, width1, Convert.ToInt32(fHeight));
+
+                panel1.AutoScroll = true;
+                this.pictureBox1.Image = ImagSized;
+                pictureBox1.Image = bmp;
+                pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            }
+        }
+
+        private void btnCheck_Click(object sender, EventArgs e)
+        {
+            trackBar1.Value = 1;
+            lststdResults.Items.Clear();
+            if (stream != null)
+            {
+                string INIpath = System.Windows.Forms.Application.StartupPath + @"\Data\INI.ini";
+
+                string[] ModelsNames = new string[2];
+                IniFile AppliIni = new IniFile(INIpath);
+                string ss = AppliIni.ReadValue("Models", "path", "");
+                int numFiles = Directory.GetFiles(ss, "*.vrws").GetLength(0);
+
+                //string ImagePath = AppliIni.ReadValue("Last Image", "path", "");
+
+                // txtImagePath.Text = ImagePath;
+                string ImagePath = txtImagePath.Text;
+                string ImageName = cmbImageName.Text;
+                if (!File.Exists(ImagePath + @"\" + ImageName))
+                {
+                    System.Windows.Forms.MessageBox.Show("image path " + ImagePath + @"\" + ImageName + "don't exist");
+                }
+                string modelsPath = AppliIni.ReadValue("Models", "path", "");
+                string[] dirModels = Directory.GetFiles(modelsPath, "*.vrws");
+                //int i = 0;
+                foreach (string item in dirModels)
+                {
+                    if (!File.Exists(item))
+                    {
+                        System.Windows.Forms.MessageBox.Show("model path " + item + "don't exist");
+                    }
+                    // lstModels.Items.Add(Path.GetFileName(item));
+                    //ModelsNames[i] = Path.GetFileName(item);
+                    //i++;
+                }
+                string[] dirImages = Directory.GetFiles(ImagePath, "*.jpg");
+                Bitmap bmp = new Bitmap(dirImages[cmbImageName.SelectedIndex]);
+                
+                //Bitmap bmp = new Bitmap(dirImages[0]);
+
+                float imgWidth = Convert.ToSingle(bmp.Width);
+                float imgHeight = Convert.ToSingle(bmp.Height);
+                float fAspectRatio = imgWidth / imgHeight;
+                int width1 = 0;
+                if (true)
+                {
+                    width1 = bmp.Width;  //pbxShowImage.Width;  //this.currentImage.picBoxDefaultWidth;
+                }
+                else
+                {
+                    width1 = (int)imgWidth;
+                }
+
+                int height1 = pictureBox1.Height;
+                float fHeight = Convert.ToSingle(width1) / fAspectRatio;
+
+                Bitmap ImagSized = new Bitmap(bmp, width1, Convert.ToInt32(fHeight));
+                unsignImage = ImagSized;
+                pictureBox2.Image = unsignImage;
+                panel1.AutoScroll = true;
+                this.pictureBox1.Image = ImagSized;
+                pictureBox1.Image = bmp;
+                pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+
+              //  SetPictureBox();
+                // loadModels();
+
+                //--------------------------set thresholds--------------------------------
+                IRedHighDetailParameters hdRedParams = Stream.Tools.First().ParametersBase as IRedHighDetailParameters;
+                ViDi2.Runtime.IRedTool hdRedTool = (ViDi2.Runtime.IRedTool)Stream.Tools.First();
+                //ViDi2.Runtime.IRedTool hdRedToolFirst = (ViDi2.Runtime.IRedTool)Stream.Tools["Proj_021_201223_104500_21122023_104445.vrws"];
+                //ViDi2.Runtime.IRedTool hdRedToolSecond = (ViDi2.Runtime.IRedTool)Stream.Tools["WS_Proj_022_261223_111400_261223_183645.vrws"];
+                double lower = 0.0;
+                double upper = 0.0;
+                if (IsNumeric(txtThresholdsLower.Text.Trim()))
+                {
+                    lower = System.Convert.ToDouble(txtThresholdsLower.Text.Trim());
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Check lower threshold, not a number!");
+                    goto exitProcedure;
+                }
+                if (IsNumeric(txtThresholdsUpper.Text.Trim()))
+                {
+                    upper = System.Convert.ToDouble(txtThresholdsUpper.Text.Trim());
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Check upper threshold, not a number!");
+                    goto exitProcedure;
+                }
+                bool xNotRedTool = false;
+                if (hdRedParams == null) { xNotRedTool = true; }
+
+                if (!xNotRedTool)
+                {
+                    ViDi2.Interval interval = new ViDi2.Interval(lower, upper);
+                    hdRedParams.Threshold = interval;
+
+                    //ViDi2.IParameters pb = Stream.Tools.First().ParametersBase;
+                }
+
+                //-----------------------------------process image----------------------------------
+
+                panel1.AutoScroll = true;
+
+                int ind = cmbImageName.SelectedIndex;
+                if (ind >= 0 && ind < cmbImageName.Items.Count)
+                { 
+                //Bitmap bitmap = new Bitmap(ImagSized);
+               // Image img = bitmap;
+                
+                var image = new ViDi2.UI.WpfImage(dirImages[ind]);   // imagePath);
+                SampleViewerViewModel.Sample = stream.Process(image);
+                IMarkingOverlayViewModel mm = SampleViewerViewModel.MarkingModel;
+
+                    ViDi2.IView View = mm.Marking.Views[0];
+
+                double x = View.Pose.OffsetX;
+                double y = View.Pose.OffsetY;
+                double width = View.Size.Width;
+                double height = View.Size.Height;
+                bool isL = View.IsLabeled;
+
+                ViDi2.IRedView redview = (ViDi2.IRedView)View;
+                RegionFound[] regionFound = new RegionFound[redview.Regions.Count];
+                ViDi2.Runtime.IRedTool tool = (ViDi2.Runtime.IRedTool)Stream.Tools.First();
+
+                var knownClasses = tool.KnownClasses;
+                string className = knownClasses[0];
+                string[] s = className.Split('_');
+                string cn = "";
+                if (s.GetLength(0) > 0)
+                {
+                    if (s.GetLength(0) > 1)
+                        cn = s[1];
+                    else
+                        cn = s[0];
+                }
+                   
+                string result;
+                int index = 0;
+                 if (redview.Regions.Count == 0)
+                    {
+                        DrawRegion1(ImagSized, dirImages[ind], null);
+                    }
+                 else
+                foreach (ViDi2.IRegion item in redview.Regions)
+                {
+                    regionFound[index].area = item.Area;
+                    regionFound[index].width = item.Width;
+                    regionFound[index].height = item.Height;
+                    regionFound[index].center = item.Center;
+                    regionFound[index].score = item.Score;
+                    regionFound[index].className = cn;  // item.Name; region name
+                    regionFound[index].classColor = item.Color;
+                    regionFound[index].compactness = item.Compactness;
+                    regionFound[index].covers = item.Covers;
+                    regionFound[index].outer = item.Outer;
+                    regionFound[index].perimeter = item.Perimeter;
+                    CurrentRegion = regionFound;
+                    // DrawRegion(img, dirImages[index], regionFound[index]);
+                    //this.pictureBox1.Image =
+                    result = "Area = " + regionFound[index].area.ToString() + " Score = " + regionFound[index].score.ToString() + " Perimeter = " + regionFound[index].perimeter.ToString();
+                    lststdResults.Items.Add(result);
+
+                    DrawRegion1(ImagSized, dirImages[ind], regionFound);
+                    index++;
+                }
+                // pictureBox1.Cursor = System.Windows.Forms.Cursors.Cross;
+                //DrawRegion(pictureBox1.Image);
+                //double ex1 = CurrentRegion[0].outer[0].X;
+                //double ex2 = CurrentRegion[0].outer[0].Y;
+                //bool OK = LoadImage01(dirImages[0]);
+            }
+                exitProcedure:;
+            }
+        }
+
+        private void DrawRegion1(Image image, string dirImages, RegionFound[] reg)
+        {
+            Bitmap bmp = new Bitmap(image);
+            int excludeIndex = -1;
+            float imgWidth = Convert.ToSingle(image.Width);
+            float imgHeight = Convert.ToSingle(image.Height);
+            float fAspectRatio = imgWidth / imgHeight;
+            int width = 0;
+            width = (int)imgWidth;
+            int height = pictureBox1.Height;
+
+
+            //bitmap.Size = new Size(imgWidth, imgHeight);
+            //Bitmap img = new Bitmap(image, width, Convert.ToInt32(fHeight));
+            if (true)
+            {
+                width = PicBoxWith;
+                //width = pictureBox1.Width;  //pbxShowImage.Width;  //this.currentImage.picBoxDefaultWidth;
+            }
+            else
+            {
+                width = (int)imgWidth;
+            }
+            float fHeight = Convert.ToSingle(width) / fAspectRatio;
+
+            resultsEvluator.sClassesNames = "defect";  // cognexRedEvalOut.sClassesName;
+            resultsEvluator.ModelBestLoss = 25;
+
+            int numDetect = 1; //cognexRedEvalOut.regionOut.GetLength(0);
+            resultsEvluator.resultsPerClass.ResultsPerClass = new ExportResults.Results[1]; //for now single class models from Cognex
+            resultsEvluator.resultsPerClass.ResultsPerClass[0].Contours = new ExportResults.JsonLblData[numDetect];
+            resultsEvluator.resultsPerClass.ResultsPerClass[0].fProb = new double[numDetect];
+            resultsEvluator.resultsPerClass.ResultsPerClass[0].fUncert = new double[numDetect];
+            resultsEvluator.resultsPerClass.ResultsPerClass[0].rect = new ExportResults.Rect[numDetect];
+
+            //if (reg == null)
+            //{
+                Bitmap bitmap1 = new Bitmap(bmp, width, Convert.ToInt32(fHeight));
+                pictureBox1.Image = bitmap1;
+                regionPic = bitmap1;
+                //unsignImage = bitmap;
+                signImage = bitmap1;
+                unsignImage = bitmap1;   
+            //}
+            //else//countors
+            foreach (RegionFound item in reg)
+            {
+                int icounterNumber = 0;
+                //foreach (ViDi2.IRegion item in reg.outer)
+                //{
+                if (item.outer != null)
+                { 
+                resultsEvluator.resultsPerClass.ResultsPerClass[0].Contours[icounterNumber].ijCoordinates = new int[numDetect][,];
+                resultsEvluator.resultsPerClass.ResultsPerClass[0].Contours[icounterNumber].ijCoordinates[icounterNumber] = new int[item.outer.Count, 2];
+                resultsEvluator.resultsPerClass.ResultsPerClass[0].Contours[icounterNumber].bClasses = new byte[1];
+                resultsEvluator.resultsPerClass.ResultsPerClass[0].Contours[icounterNumber].bClasses[0] = 0; //class id backwoard competability
+                                                                                                             //convert countor points array to integer array
+                for (int i = 0; i < item.outer.Count; i++)
+                {
+                    ViDi2.Point p = item.outer[i];
+                    resultsEvluator.resultsPerClass.ResultsPerClass[0].Contours[icounterNumber].ijCoordinates[icounterNumber][i, 0] = (int)p.X;
+                    resultsEvluator.resultsPerClass.ResultsPerClass[0].Contours[icounterNumber].ijCoordinates[icounterNumber][i, 1] = (int)p.Y;
+                }
+
+                for (int i = 0; i < item.outer.Count; i++)
+                {
+                    ViDi2.Point p = item.outer[i];
+                    resultsEvluator.resultsPerClass.ResultsPerClass[0].Contours[icounterNumber].ijCoordinates[icounterNumber][i, 0] = (int)p.X;
+                    resultsEvluator.resultsPerClass.ResultsPerClass[0].Contours[icounterNumber].ijCoordinates[icounterNumber][i, 1] = (int)p.Y;
+                }
+            }
+            //List<ViDi2.Point> pointsl = item.Outer.ToList();                                                          
+            //prob., score
+            resultsEvluator.resultsPerClass.ResultsPerClass[0].fProb[icounterNumber] = item.score;
+            resultsEvluator.resultsPerClass.ResultsPerClass[0].fUncert[icounterNumber] = 0;
+
+            resultsEvluator.resultsPerClass.ResultsPerClass[0].rect[icounterNumber].width = item.width;
+            resultsEvluator.resultsPerClass.ResultsPerClass[0].rect[icounterNumber].height = item.height;
+
+            resultsEvluator.resultsPerClass.ResultsPerClass[0].rect[icounterNumber].x = (int)(item.center.X - item.width / 2);
+            resultsEvluator.resultsPerClass.ResultsPerClass[0].rect[icounterNumber].y = (int)(item.center.Y - item.height / 2);
+
+            icounterNumber++;
+            //}
+
+            JsonLblData jsonLbl = new JsonLblData();
+            jsonLbl.ijCoordinates = resultsEvluator.resultsPerClass.ResultsPerClass[0].Contours[0].ijCoordinates;
+
+            jsonLbl.bClasses = new byte[1] { 1 };
+            //unsignImage = bmp;
+            Bitmap Bmp1 = FillLabel(bmp, jsonLbl, 1);
+            signImage = Bmp1;
+            
+            Bitmap bitmap = new Bitmap(Bmp1, width, Convert.ToInt32(fHeight));
+
+            pictureBox1.Image = bitmap;
+            regionPic = bitmap;
+
+        }
+
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //trackBar1.Value = 1;
+            //lststdResults.Items.Clear();
+
+            frmEndmillNewTab form2 = new frmEndmillNewTab();
+            form2.Show();
+        }
+
+        //private void DrawRegion(Image image, string dirImages, RegionFound reg)
+        //{
+        //    //Bitmap bitmap = new Bitmap(dirImages);
+        //    Bitmap bmp = new Bitmap(dirImages);
+        //    //pictureBox1.Image = bmp;
+        //    int excludeIndex = -1;
+        //    float imgWidth = Convert.ToSingle(image.Width);
+        //    float imgHeight = Convert.ToSingle(image.Height);
+        //    float fAspectRatio = imgWidth / imgHeight;
+        //    int width = 0;
+        //    width = (int)imgWidth;
+        //    int height = pictureBox1.Height;
+        //    float fHeight = Convert.ToSingle(width) / fAspectRatio;
+        //    Bitmap bitmap = new Bitmap(image, width, Convert.ToInt32(fHeight));
+        //    //bitmap.Size = new Size(imgWidth, imgHeight);
+        //    Bitmap img = new Bitmap(image, width, Convert.ToInt32(fHeight));
+
+        //    foreach (ViDi2.Point o in reg.outer)
+        //    {
+        //        //Myouter[j] = new Vector3(Pixel_to_Mn((float)o.X), Pixel_to_Mn((float)o.Y), Pixel_to_Mn((float)o.X));
+        //        //bitmap.SetPixel(10, 10, Color.Red);
+        //        //bitmap.SetPixel(100, 100, Color.Red);
+        //        //bmp.SetPixel(1000, 1000, Color.Red);
+        //        //bmp.SetPixel((int)o.X/10, (int)o.Y/10, Color.Red);
+                
+        //        pictureBox1.Image = bmp;
+              
+        //        //e.Graphics.DrawPoint(new Pen(Color.Red, 0), Myouter[0]);
+        //    }
+
+        //}
+
+        public void DrawRectangle ()
+        {
+
+        }
+
+        private void MainScreen_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //must have this, otherwise application will not shutdown
+            MarkingOverlayExtensions.TeardownOverlayEnvironment();
+
+            sampleviewr.sampleViewer.ViewModel.Dispose();
+            sampleviewr.sampleViewer.Dispose();
+            sampleviewr = null;
+
+            //if (Workspace != null)
+            //    if (Workspace.IsOpen)
+            //    {
+            //        Workspace.Close();
+            //        control.Workspaces.Remove(Workspace.DisplayName);
+            //    }
+
+            if (rwsl != null)
+            {
+                for (int i = rwsl.Names.Count - 1; i > -1; i--)
+                {
+                    if (rwsl[rwsl.Names[i]].IsOpen)
+                        rwsl[rwsl.Names[i]].Close();
+                }
+            }
+
+            if (control != null)
+            {
+                control.Dispose();
+                control = null;
+            }
+        }
+
+        private void pictureBox1_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+           // currentPosition = PointToCartesian(e.Location);
+            //lblCoor.Text = string.Format("{0}, {1}", e.Location.X, e.Location.Y);
+            // lblCoor.Text = string.Format("{0,0:F3}, {1,0:F3}", currentPosition.X, currentPosition.Y);
+            lblCoor.Text = string.Format("{0,0:F3}, {1,0:F3}", Mm_to_Pixel( e.Location.X), Mm_to_Pixel (e.Location.Y));
+
+        }
+
+
+
+        private static Bitmap LoadBitmapUnlocked(string file_name)
+        {
+            //using (Bitmap bm = new Bitmap(file_name))
+            //{
+            //    return new Bitmap(bm);
+            //}
+
+            //19/10/2021
+            Image img = null;
+            using (FileStream stream = new FileStream(file_name, FileMode.Open, FileAccess.Read))
+            {
+                img = Image.FromStream(stream);
+                stream.Close();
+
+                return (Bitmap)img;
+            }
+        }
+
+        private Image SaveToStream(Image img)
+        {
+            Bitmap bmp = new Bitmap(img);
+            var ms = new MemoryStream();
+
+           // bmp.Save(ms, jgpEncoder, myEncoderParameters);
+
+            //Do whatever you need to do with the image
+            //e.g.
+            //img = Image.FromStream(ms);
+
+            return img;
+        }
+
+        private bool LoadImage01(string pathandbname)
+        {
+            bool xLoadOK = false;
+            if (File.Exists(pathandbname))
+            {
+                Image image = LoadBitmapUnlocked(pathandbname);
+
+                currentImage.imgActiveImage = (Image)image.Clone();
+                int ilenght = pathandbname.Length;
+                string snapIndex = pathandbname.Substring(ilenght - 5, 1);
+
+                switch (snapIndex)
+                {
+                    case "1":
+                        currentImage.zoomSnap1 = SaveToStream(image);
+                        break;
+
+                    case "2":
+                        currentImage.zoomSnap2 = SaveToStream(image);
+                        break;
+
+                    case "3":
+                        currentImage.zoomSnap3 = SaveToStream(image);
+                        break;
+                    case "4":
+                        currentImage.zoomSnap4 = SaveToStream(image);
+                        break;
+                    case "5":
+                        currentImage.zoomSnap5 = SaveToStream(image);
+                        break;
+                }
+                currentImage.imgWidth = image.Width;
+                currentImage.imgHeight = image.Height;
+                currentImage.path = pathandbname;
+
+                defaultImagePath = pathandbname;
+
+                float imgWidth = Convert.ToSingle(image.Width);
+                float imgHeight = Convert.ToSingle(image.Height);
+                float fAspectRatio = imgWidth / imgHeight;
+
+                int width = 0;
+                if (!chckZoom.Checked)
+                {
+                    width = currentImage.picBoxDefaultWidth;  //pbxShowImage.Width;  //this.currentImage.picBoxDefaultWidth;
+                }
+                else
+                {
+                    width = (int)imgWidth;
+                }
+                int height = pictureBox1.Height;
+                float fHeight = Convert.ToSingle(width) / fAspectRatio;
+
+                Bitmap img = new Bitmap(image, width, Convert.ToInt32(fHeight));
+                currentImage.picBoxDefaultWidth = img.Width;
+                currentImage.picBoxDefaultHeight = img.Height;
+               // pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+
+                if (image != null)
+                    image.Dispose();
+
+                xLoadOK = true;
+            }
+            else
+            {
+                xLoadOK = false;
+            }
+
+            return xLoadOK;
+        }
+
+
+
+        private Bitmap FillLabel(Bitmap ImgBitmap, JsonLblData ijCoordinates, int excludeIndex)
+        {
+
+            Graphics g = null;
+            using (g = Graphics.FromImage(ImgBitmap))
+            {
+                int iNumOfClasses = ijCoordinates.bClasses.GetLength(0);
+                for (int c = 0; c < iNumOfClasses; c++)
+                {
+                    if (ijCoordinates.bClasses[c] > 0)
+                    {
+                        if (excludeIndex != c)
+                        {
+
+                            Color ClassColor = Color.Green;
+                            Pen ContourPen = new Pen(Color.Green);
+                            // Set the pen's width.
+                            ContourPen.Width = 3.0F;
+
+                            int iClassIndex = ijCoordinates.bClasses[c];
+
+                            if (iClassIndex == 0)
+                            {
+                                ClassColor = Color.Green; ContourPen = new Pen(Color.Green);
+                            }
+                            else if (iClassIndex == 1)
+                            {
+                                ClassColor = Color.Red;
+                                ContourPen = new Pen(Color.Red);
+                            }
+                            else if (iClassIndex == 2)
+                            {
+                                ClassColor = Color.Blue;
+                                ContourPen = new Pen(Color.Blue);
+                            }
+
+                            //set class id for bitmap
+                            //if (ijCoordinates.selectedContour == c)
+                            //{
+                            //    ClassColor = Color.Yellow;
+                            //    ContourPen = new Pen(Color.Yellow);
+
+                            //    ijCoordinates.selectedContour = -1;
+                            //}
+
+
+                            ContourPen.Width = 3.0F;
+                            SolidBrush ClassBrush = new SolidBrush(ClassColor);
+
+                            //get coordinates of label i
+                            int iNumCoor = ijCoordinates.ijCoordinates[c].GetLength(0);
+                           System.Drawing.Point[] LblCoordinates = new System.Drawing.Point[iNumCoor];
+                            //load label's contuor coordinates 
+                            for (int i = 0; i < iNumCoor; i++)
+                            {
+                                int iCorrX = ijCoordinates.ijCoordinates[c][i, 0];
+                                int iCorrY = ijCoordinates.ijCoordinates[c][i, 1];
+                                System.Drawing.Point pnt = new System.Drawing.Point(iCorrX, iCorrY);
+
+                                LblCoordinates[i] = pnt;
+                            }
+
+                            bool xContourOnly = true;
+                            if (!xContourOnly)
+                            {
+                                g.FillClosedCurve(ClassBrush, LblCoordinates);  //standard mode (default mode is Alternate)
+                            }
+                            else
+                            {
+                                //Pen p = Pens.Green;
+                                // Create a new pen.
+                                g.DrawPolygon(ContourPen, LblCoordinates);  //standard mode (default mode is Alternate)
+                            }
+                        }
+                    }
+
+                } //end for class index
+            }
+
+            return ImgBitmap;
+
+        }
+        private void ZoomInOut(bool zoom)
+        {
+            //Zoom ratio by which the images will be zoomed by default
+            int zoomRatio = 10;
+            //Set the zoomed width and height
+            int widthZoom = pictureBox1.Image.Width * zoomRatio / 100;
+            int heightZoom = pictureBox1.Image.Height * zoomRatio / 100;
+            //zoom = true --> zoom in
+            //zoom = false --> zoom out
+            if (!zoom)
+            {
+                widthZoom *= -1;
+                heightZoom *= -1;
+            }
+            //Add the width and height to the picture box dimensions
+            pictureBox1.Width += widthZoom;
+            pictureBox1.Height += heightZoom;
+        }
+        private void panel1_Scroll(object sender, ScrollEventArgs e)
+        {
+            bool zoom;
+            if (panel1.AutoScroll)
+            {
+                zoom = true;
+            }
+            else
+            {
+                 zoom = false;
+            }
+            ZoomInOut(zoom);
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            if (trackBar1.Value!=0)
+            {
+                currentZoom = trackBar1.Value;
+                pictureBox1.Image = null;
+                unsignImage = ZoomPicture(unsignImage, new System.Drawing.Size(trackBar1.Value, trackBar1.Value));
+                pictureBox1.Image = ZoomPicture(org.Image, new System.Drawing.Size(trackBar1.Value, trackBar1.Value));
+            }
+        }
+
+        private void txtImagePath_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtImagePath.Text != "")
+                {
+                    cmbImageName.Items.Clear();
+                    string ImagePath = txtImagePath.Text;
+                    string[] dirImages = Directory.GetFiles(ImagePath, "*.jpg");
+                    //only image name
+                    foreach (string item in dirImages)
+                    {
+                        cmbImageName.Items.Add(Path.GetFileName(item));
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void pictureBox1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            //signImage = pictureBox1.Image;
+            pictureBox1.Image = null;
+            pictureBox1.Image = ZoomPicture(unsignImage, new System.Drawing.Size(trackBar1.Value, trackBar1.Value));
+        }
+
+        private void pictureBox1_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            pictureBox1.Image = null;
+            pictureBox1.Image = ZoomPicture(signImage, new System.Drawing.Size(trackBar1.Value, trackBar1.Value));
+        }
+
+      
     }
 }
