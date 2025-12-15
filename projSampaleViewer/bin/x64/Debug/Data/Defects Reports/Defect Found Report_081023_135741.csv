@@ -1,0 +1,16 @@
+08-10-2023, 13:57:41,image name,002_06.00_010_1.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.40,0.98, roi used,false, angle,0.00, x,3000.00, y,2600.00, width,2000.00, height,300.00
+,,class name,D002,score,0.95,cnter,3264,2717,area,339,width,51,height,25
+,,class name,D002,score,0.97,cnter,3976,2720,area,286,width,32,height,25
+,,class name,D002,score,0.91,cnter,4205,2694,area,59,width,12,height,6
+08-10-2023, 14:01:00,image name,002_06.00_010_1.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.40,0.98, roi used,true, angle,0.00, x,3000.00, y,2600.00, width,2000.00, height,300.00
+,,class name,D002,score,0.91,cnter,980,123,area,77,width,13,height,9
+,,class name,D002,score,0.96,cnter,274,123,area,176,width,23,height,17
+,,class name,D002,score,0.45,cnter,1205,94,area,1,width,1,height,1
+,,class name,D002,score,0.44,cnter,1207,94,area,1,width,2,height,1
+08-10-2023, 14:11:35,image name,002_06.00_010_1.jpg,model name,Defect015All_proj_006_070823_094400_08082023_145235.vrws, Thresholds,0.40,0.98, roi used,true, angle,0.00, x,3000.00, y,2600.00, width,2000.00, height,300.00
+,,------------------------------no defects found-----------------------------
+08-10-2023, 14:11:42,image name,002_06.00_010_1.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.40,0.98, roi used,true, angle,0.00, x,3000.00, y,2600.00, width,2000.00, height,300.00
+,,class name,D002,score,0.91,cnter,980,123,area,77,width,13,height,9
+,,class name,D002,score,0.96,cnter,274,123,area,176,width,23,height,17
+,,class name,D002,score,0.45,cnter,1205,94,area,1,width,1,height,1
+,,class name,D002,score,0.44,cnter,1207,94,area,1,width,2,height,1

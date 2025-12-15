@@ -1,0 +1,6 @@
+01-01-2024, 08:31:26,image name,002_06.00_016_f1.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,
+01-01-2024, 08:31:28,image name,002_06.00_016_f1.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2043,score,0.27,cnter,2070,2568,area,365,width,52,height,13
+,,class name,D2043,score,0.28,cnter,1917,2563,area,292,width,58,height,7
+,,class name,D2043,score,0.23,cnter,1980,2261,area,70,width,19,height,10

@@ -1,0 +1,150 @@
+18-10-2023, 06:44:01,image name,002_06.00_010_1.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.80,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,------------------------------no defects found-----------------------------
+18-10-2023, 06:45:00,image name,002_02.50_001_1.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.80,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.93,cnter,1322,642,area,36,width,11,height,4
+18-10-2023, 07:05:27,image name,002_02.50_001_1.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.93,cnter,1322,642,area,65,width,14,height,6
+18-10-2023, 07:06:12,image name,002_02.50_001_1.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.97,cnter,4302,2575,area,142,width,21,height,9
+18-10-2023, 07:27:26,image name,002_02.50_001_2.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.93,cnter,4304,2567,area,74,width,16,height,6
+18-10-2023, 07:28:03,image name,002_02.50_001_2.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,------------------------------no defects found-----------------------------
+18-10-2023, 07:29:04,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 07:29:59,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.92,cnter,4371,2571,area,48,width,11,height,6
+18-10-2023, 07:30:51,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 07:58:38,image name,002_02.50_001_2.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,------------------------------no defects found-----------------------------
+18-10-2023, 08:01:20,image name,002_02.50_001_2.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,------------------------------no defects found-----------------------------
+18-10-2023, 08:06:52,image name,002_02.50_001_2.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,------------------------------no defects found-----------------------------
+18-10-2023, 08:19:54,image name,002_02.50_001_2.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,------------------------------no defects found-----------------------------
+18-10-2023, 08:33:51,image name,002_02.50_001_2.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,------------------------------no defects found-----------------------------
+18-10-2023, 08:46:33,image name,002_02.50_001_2.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,------------------------------no defects found-----------------------------
+18-10-2023, 08:47:13,image name,002_02.50_001_2.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,------------------------------no defects found-----------------------------
+18-10-2023, 09:23:33,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 09:23:51,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 09:24:03,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 09:42:24,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.92,cnter,4371,2571,area,48,width,11,height,6
+18-10-2023, 09:43:04,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 10:03:19,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 10:08:26,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 10:08:46,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 10:08:54,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 10:20:28,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 10:33:57,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 10:37:32,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 10:39:46,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 10:51:52,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 11:31:09,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 11:37:57,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 11:42:31,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 11:54:25,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 12:11:24,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 12:17:18,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 12:18:57,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 12:33:36,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 12:37:29,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 13:27:19,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 13:28:48,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 13:43:01,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 13:57:01,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.65,cnter,1395,638,area,2,width,3,height,1
+18-10-2023, 13:57:20,image name,002_02.50_001_1.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.93,cnter,1322,642,area,65,width,14,height,6
+18-10-2023, 14:01:47,image name,002_02.50_001_1.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.93,cnter,1322,642,area,65,width,14,height,6
+18-10-2023, 14:02:24,image name,002_02.50_001_1.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.97,cnter,4302,2575,area,142,width,21,height,9
+18-10-2023, 14:02:36,image name,002_02.50_001_4.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.92,cnter,4371,2571,area,48,width,11,height,6
+18-10-2023, 14:03:00,image name,002_06.00_007_2.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.73,cnter,3492,2300,area,6,width,3,height,3
+18-10-2023, 14:03:22,image name,002_06.00_009_3.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.98,cnter,3557,2929,area,585,width,62,height,20
+,,class name,D002,score,0.98,cnter,3609,2916,area,769,width,50,height,25
+,,class name,D002,score,0.98,cnter,3671,2895,area,818,width,60,height,23
+18-10-2023, 14:09:00,image name,002_06.00_009_3.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.98,cnter,3557,2929,area,585,width,62,height,20
+,,class name,D002,score,0.98,cnter,3608,2916,area,767,width,50,height,25
+,,class name,D002,score,0.98,cnter,3671,2895,area,817,width,60,height,23
+18-10-2023, 14:14:58,image name,002_06.00_009_3.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.98,cnter,3557,2929,area,585,width,62,height,20
+,,class name,D002,score,0.98,cnter,3608,2916,area,768,width,50,height,25
+,,class name,D002,score,0.98,cnter,3671,2895,area,817,width,60,height,23
+18-10-2023, 14:22:51,image name,002_06.00_009_3.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.98,cnter,3557,2929,area,585,width,62,height,20
+,,class name,D002,score,0.98,cnter,3608,2916,area,768,width,50,height,25
+,,class name,D002,score,0.98,cnter,3671,2895,area,818,width,60,height,23
+18-10-2023, 14:27:33,image name,002_06.00_009_3.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.98,cnter,3557,2929,area,585,width,62,height,20
+,,class name,D002,score,0.98,cnter,3608,2916,area,768,width,50,height,25
+,,class name,D002,score,0.98,cnter,3671,2895,area,817,width,60,height,23
+18-10-2023, 14:29:16,image name,002_06.00_009_3.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.98,cnter,3557,2929,area,585,width,62,height,20
+,,class name,D002,score,0.98,cnter,3608,2916,area,768,width,50,height,25
+,,class name,D002,score,0.98,cnter,3671,2895,area,818,width,60,height,23
+18-10-2023, 14:42:44,image name,002_06.00_009_3.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.98,cnter,3557,2929,area,585,width,62,height,20
+,,class name,D002,score,0.98,cnter,3608,2916,area,767,width,50,height,25
+,,class name,D002,score,0.98,cnter,3671,2895,area,817,width,60,height,23
+18-10-2023, 14:44:36,image name,002_06.00_009_3.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.98,cnter,3557,2929,area,585,width,62,height,20
+,,class name,D002,score,0.98,cnter,3608,2916,area,768,width,50,height,25
+,,class name,D002,score,0.98,cnter,3671,2895,area,817,width,60,height,23
+18-10-2023, 14:44:52,image name,002_06.00_009_3.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.98,cnter,3557,2929,area,585,width,62,height,20
+,,class name,D002,score,0.98,cnter,3608,2916,area,768,width,50,height,25
+,,class name,D002,score,0.98,cnter,3671,2895,area,817,width,60,height,23
+18-10-2023, 14:47:50,image name,002_06.00_009_3.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.98,cnter,3557,2929,area,585,width,62,height,20
+,,class name,D002,score,0.98,cnter,3608,2916,area,768,width,50,height,25
+,,class name,D002,score,0.98,cnter,3671,2895,area,818,width,60,height,23
+18-10-2023, 14:56:00,image name,002_06.00_009_3.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.98,cnter,3557,2929,area,585,width,62,height,20
+,,class name,D002,score,0.98,cnter,3608,2916,area,768,width,50,height,25
+,,class name,D002,score,0.98,cnter,3671,2895,area,817,width,60,height,23
+18-10-2023, 14:56:04,image name,002_06.00_009_3.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.98,cnter,3557,2929,area,585,width,62,height,20
+,,class name,D002,score,0.98,cnter,3609,2916,area,769,width,50,height,25
+,,class name,D002,score,0.98,cnter,3671,2895,area,817,width,60,height,23
+18-10-2023, 14:56:10,image name,002_06.00_009_3.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,true, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,------------------------------no defects found-----------------------------
+18-10-2023, 14:56:26,image name,002_06.00_009_3.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.60,1.00, roi used,false, angle,0.00, x,2979.00, y,1933.00, width,2500.00, height,839.00
+,,class name,D002,score,0.98,cnter,3557,2929,area,585,width,62,height,20
+,,class name,D002,score,0.98,cnter,3608,2916,area,768,width,50,height,25
+,,class name,D002,score,0.98,cnter,3671,2895,area,817,width,60,height,23

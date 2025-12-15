@@ -1,0 +1,24 @@
+20-09-2023, 06:51:04,image name,002_05.00_005_1.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.40,0.98
+,,class name,D002,score,0.94,cnter,3820,2660,area,167,width,34,height,12
+,,class name,D002,score,0.98,cnter,3761,2644,area,404,width,31,height,18
+,,class name,D002,score,0.96,cnter,4136,2565,area,169,width,21,height,9
+20-09-2023, 06:51:13,image name,002_05.00_005_1.jpg,model name,Defect015All_proj_006_070823_094400_08082023_145235.vrws, Thresholds,0.40,0.98
+,,------------------------------no defects found-----------------------------
+20-09-2023, 06:51:17,image name,002_05.00_005_1.jpg,model name,Defect015Edge_Proj_007_140823_142600_21082023_082450.vrws, Thresholds,0.40,0.98
+,,class name,Ddefect,score,0.92,cnter,3624,2423,area,1157,width,29,height,52
+20-09-2023, 06:51:22,image name,002_05.00_005_1.jpg,model name,Defect015Middel_Proj_008_210823_102900_21082023_142124.vrws, Thresholds,0.40,0.98
+,,------------------------------no defects found-----------------------------
+20-09-2023, 06:51:27,image name,002_05.00_005_1.jpg,model name,Defect223_proj_001_050723_093500_17072023_110032.vrws, Thresholds,0.40,0.98
+,,------------------------------no defects found-----------------------------
+20-09-2023, 07:07:47,image name,002_05.00_005_1.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.40,0.98
+,,class name,D002,score,0.94,cnter,3820,2660,area,167,width,34,height,12
+,,class name,D002,score,0.98,cnter,3761,2644,area,404,width,31,height,18
+,,class name,D002,score,0.96,cnter,4136,2565,area,169,width,21,height,9
+20-09-2023, 10:25:23,image name,002_05.00_005_1.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.40,0.98
+,,class name,D002,score,0.94,cnter,3820,2660,area,167,width,34,height,12
+,,class name,D002,score,0.98,cnter,3761,2644,area,404,width,31,height,18
+,,class name,D002,score,0.96,cnter,4136,2565,area,169,width,21,height,9
+20-09-2023, 13:55:22,image name,002_05.00_005_1.jpg,model name,Defect002Proj_009_110923_120400_12092023_080214.vrws, Thresholds,0.40,0.98
+,,class name,D002,score,0.94,cnter,3820,2660,area,167,width,34,height,12
+,,class name,D002,score,0.98,cnter,3761,2644,area,404,width,31,height,18
+,,class name,D002,score,0.96,cnter,4136,2565,area,169,width,21,height,9

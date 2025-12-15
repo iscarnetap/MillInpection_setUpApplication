@@ -1,0 +1,95 @@
+28-12-2023, 11:45:35,image name,015_03.00_003_1.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,
+28-12-2023, 11:45:38,image name,015_03.00_003_1.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2043,score,0.31,cnter,2649,2363,area,1372,width,131,height,51
+28-12-2023, 11:46:23,image name,015_04.00_022_2.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2043,score,0.27,cnter,3911,2352,area,294,width,50,height,20
+28-12-2023, 11:46:35,image name,015_16.00_003_2.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2043,score,0.23,cnter,3691,3049,area,92,width,18,height,9
+28-12-2023, 11:46:42,image name,015_03.00_003_1.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2043,score,0.31,cnter,2649,2363,area,1372,width,131,height,51
+28-12-2023, 11:46:52,image name,015_04.00_022_2.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2043,score,0.27,cnter,3911,2352,area,294,width,50,height,20
+28-12-2023, 11:47:01,image name,015_16.00_003_2.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2043,score,0.23,cnter,3691,3049,area,92,width,18,height,9
+28-12-2023, 11:47:24,image name,223_10.00_017_1.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2043,score,0.45,cnter,4432,2914,area,6308,width,198,height,74
+,,class name,D2043,score,0.43,cnter,2181,2326,area,2947,width,74,height,55
+28-12-2023, 11:47:53,image name,223_16.00_024_5.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2043,score,0.37,cnter,1205,2922,area,1532,width,82,height,44
+,,class name,D2043,score,0.31,cnter,5184,2839,area,218,width,24,height,11
+,,class name,D2043,score,0.28,cnter,5444,2824,area,281,width,31,height,15
+,,class name,D2043,score,0.23,cnter,1172,725,area,144,width,45,height,17
+,,class name,D2043,score,0.27,cnter,876,639,area,605,width,42,height,20
+28-12-2023, 11:48:58,image name,015_03.00_003_1.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2043,score,0.31,cnter,2582,2231,area,622,width,76,height,20
+28-12-2023, 11:49:46,image name,015_04.00_022_2.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2043,score,0.24,cnter,2762,2212,area,99,width,27,height,12
+28-12-2023, 11:50:19,image name,002_06.00_014_2.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,
+28-12-2023, 11:50:22,image name,002_06.00_014_2.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.21,cnter,3578,3083,area,84,width,10,height,15
+,,class name,D2042,score,0.91,cnter,3560,2836,area,860,width,32,height,36
+28-12-2023, 11:50:31,image name,002_06.00_014_2.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,
+28-12-2023, 11:50:34,image name,002_06.00_014_2.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,
+28-12-2023, 11:50:43,image name,002_06.00_014_2.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,
+28-12-2023, 11:50:49,image name,002_06.00_014_2.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.21,cnter,3578,3083,area,84,width,10,height,15
+,,class name,D2042,score,0.91,cnter,3560,2836,area,860,width,32,height,36
+28-12-2023, 11:51:29,image name,002_12.00_028_6.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.94,cnter,2594,3060,area,2229,width,51,height,56
+,,class name,D2042,score,0.29,cnter,3245,2738,area,101,width,14,height,12
+28-12-2023, 11:51:53,image name,223_03.00_035_1.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.34,cnter,4077,2935,area,118,width,18,height,9
+28-12-2023, 11:52:14,image name,223_04.00_001_1.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.65,cnter,3354,2909,area,1132,width,47,height,61
+,,class name,D2042,score,0.64,cnter,3374,2856,area,878,width,58,height,24
+,,class name,D2042,score,0.22,cnter,3316,2661,area,66,width,12,height,9
+,,class name,D2042,score,0.21,cnter,4376,2540,area,98,width,14,height,10
+28-12-2023, 11:52:35,image name,223_03.00_035_1.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.34,cnter,4077,2935,area,118,width,18,height,9
+28-12-2023, 11:53:13,image name,223_03.00_035_1.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.88,cnter,3227,1463,area,260,width,26,height,16
+28-12-2023, 11:53:56,image name,223_03.00_035_1.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,
+28-12-2023, 11:53:58,image name,223_03.00_035_1.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2043,score,0.32,cnter,3339,1426,area,275,width,24,height,14
+28-12-2023, 11:54:37,image name,223_03.00_035_1.jpg,model name,WS_Proj_022_261223_111400_261223_183645.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2043,score,0.27,cnter,4074,2934,area,163,width,18,height,13
+28-12-2023, 11:55:07,image name,223_03.00_035_1.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,
+28-12-2023, 11:55:10,image name,223_03.00_035_1.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.34,cnter,4077,2935,area,118,width,18,height,9
+28-12-2023, 11:56:19,image name,002_06.00_014_2.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.21,cnter,3578,3083,area,84,width,10,height,15
+,,class name,D2042,score,0.91,cnter,3560,2836,area,860,width,32,height,36
+28-12-2023, 11:56:30,image name,002_12.00_028_6.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.94,cnter,2594,3060,area,2229,width,51,height,56
+,,class name,D2042,score,0.29,cnter,3245,2738,area,101,width,14,height,12
+28-12-2023, 11:56:46,image name,223_04.00_001_1.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.65,cnter,3354,2909,area,1132,width,47,height,61
+,,class name,D2042,score,0.64,cnter,3374,2856,area,878,width,58,height,24
+,,class name,D2042,score,0.22,cnter,3316,2661,area,66,width,12,height,9
+,,class name,D2042,score,0.21,cnter,4376,2540,area,98,width,14,height,10
+28-12-2023, 11:57:03,image name,223_16.00_036_1.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.94,cnter,2091,3082,area,725,width,40,height,21
+,,class name,D2042,score,0.91,cnter,3931,3047,area,678,width,39,height,24
+28-12-2023, 11:59:17,image name,223_16.00_036_1.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.94,cnter,1987,3536,area,1299,width,52,height,32
+28-12-2023, 11:59:41,image name,223_04.00_001_1.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.93,cnter,3521,2321,area,1949,width,72,height,34
+,,class name,D2042,score,0.22,cnter,3568,2241,area,141,width,16,height,15
+,,class name,D2042,score,0.87,cnter,3503,2251,area,2547,width,60,height,83
+,,class name,D2042,score,0.92,cnter,3493,2179,area,816,width,27,height,41
+28-12-2023, 12:00:19,image name,223_03.00_035_1.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.92,cnter,3591,2371,area,323,width,26,height,17
+28-12-2023, 12:00:32,image name,002_12.00_028_6.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.87,cnter,1188,2529,area,3020,width,62,height,62
+,,class name,D2042,score,0.31,cnter,3263,1190,area,133,width,18,height,9
+28-12-2023, 12:12:08,image name,223_03.00_035_1.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,
+28-12-2023, 12:12:11,image name,223_03.00_035_1.jpg,model name,Proj_021_201223_104500_21122023_104445.vrws, Thresholds,0.20,1.00, roi used,false, angle,0.00, x,260.00, y,2949.00, width,5222.00, height,626.00
+,,class name,D2042,score,0.86,cnter,780,656,area,218,width,23,height,13
